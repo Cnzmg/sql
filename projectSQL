@@ -1,0 +1,4 @@
+(select count(*) from User_info u,Shop_info s where s.user_id = u.user_id and (u.upperlevel = c.id or u.user_id = c.id)) as shopNumber,
+(select count(*) from User_info u,Shop_info s,Project_info p where s.user_id = u.user_id and (u.upperlevel = c.id or u.user_id = c.id) AND s.shop_id = p.shop_id) AS projectNumber,
+(select count(*) from User_info u,Shop_info s,Project_info p where (s.user_id = u.user_id AND (u.upperlevel = c.id or u.user_id = c.id) AND s.shop_id = p.shop_id) AND p.project_state = 4) AS stat4Number,
+(select count(*) from User_info u,Shop_info s,Project_info p where (s.user_id = u.user_id AND (u.upperlevel = c.id or u.user_id = c.id) AND s.shop_id = p.shop_id) AND p.project_state <> 4) AS stat0Number
